@@ -1,0 +1,44 @@
+{
+  "extends": ["next/core-web-vitals", "airbnb", "airbnb/hooks", "prettier"],
+  "plugins": ["testing-library"],
+  "overrides": [
+    {
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "next/core-web-vitals",
+        "airbnb",
+        "airbnb/hooks",
+        "airbnb-typescript",
+        "prettier"
+      ],
+      "parserOptions": {
+        "project": "./tsconfig.json"
+      },
+      "rules": {
+        // suppress errors for missing 'import React' in files for nextjs, Overrides airbnb
+        "react/react-in-jsx-scope": "off",
+        // override airbnb, too opinionated. Somtimes prop spreading is needed.
+        "react/jsx-props-no-spreading": ["off"],
+        // override airbnb, too opinionated. Sometimes line-liners with many expressions are better
+        "react/jsx-one-expression-per-line": ["off"],
+        // use default values for option parameters instead
+        "react/require-default-props": "off"
+      }
+    },
+    // Only uses Testing Library lint rules in test files
+    {
+      "files": ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      "extends": ["plugin:testing-library/react"]
+    }
+  ],
+  "rules": {
+    // suppress errors for missing 'import React' in files for nextjs, Overrides airbnb
+    "react/react-in-jsx-scope": "off",
+    // override airbnb, too opinionated. Somtimes prop spreading is needed.
+    "react/jsx-props-no-spreading": ["off"],
+    // override airbnb, too opinionated. Sometimes line-liners with many expressions are better
+    "react/jsx-one-expression-per-line": ["off"],
+    // use default values for option parameters instead
+    "react/require-default-props": "off"
+  }
+}
